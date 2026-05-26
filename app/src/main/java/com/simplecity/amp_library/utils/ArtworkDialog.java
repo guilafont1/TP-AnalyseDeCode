@@ -69,7 +69,7 @@ public class ArtworkDialog {
 
         List<ViewModel> viewModels = new ArrayList<>();
 
-        UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) context.getApplicationContext()).userSelectedArtwork.get(artworkProvider.getArtworkKey());
+        UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) context.getApplicationContext()).getUserSelectedArtwork().get(artworkProvider.getArtworkKey());
         if (userSelectedArtwork != null) {
             File file = null;
             if (userSelectedArtwork.path != null) {
@@ -135,11 +135,11 @@ public class ArtworkDialog {
                         values.put(CustomArtworkTable.COLUMN_PATH, artworkModel.file == null ? null : artworkModel.file.getPath());
                         context.getContentResolver().insert(CustomArtworkTable.URI, values);
 
-                        ((ShuttleApplication) context.getApplicationContext()).userSelectedArtwork.put(artworkProvider.getArtworkKey(),
+                        ((ShuttleApplication) context.getApplicationContext()).getUserSelectedArtwork().put(artworkProvider.getArtworkKey(),
                                 new UserSelectedArtwork(artworkModel.type, artworkModel.file == null ? null : artworkModel.file.getPath()));
                     } else {
                         context.getContentResolver().delete(CustomArtworkTable.URI, CustomArtworkTable.COLUMN_KEY + "='" + artworkProvider.getArtworkKey().replaceAll("'", "\''") + "'", null);
-                        ((ShuttleApplication) context.getApplicationContext()).userSelectedArtwork.remove(artworkProvider.getArtworkKey());
+                        ((ShuttleApplication) context.getApplicationContext()).getUserSelectedArtwork().remove(artworkProvider.getArtworkKey());
                     }
                     dialog.dismiss();
                 })
@@ -176,7 +176,7 @@ public class ArtworkDialog {
                                     return RxImageConverters.uriToFile(context, uri, file);
                                 }
                             } catch (IOException e) {
-                                e.printStackTrace();
+                                LogUtils.logException(TAG, "Impossible de créer le fichier artwork", e);
                             }
 
                             return null;

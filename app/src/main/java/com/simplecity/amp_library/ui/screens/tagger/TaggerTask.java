@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.ParcelFileDescriptor;
 import android.support.v4.provider.DocumentFile;
 import com.simplecity.amp_library.model.TagUpdate;
+import com.simplecity.amp_library.utils.LogUtils;
 import io.reactivex.annotations.NonNull;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,6 +22,8 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
 
 public class TaggerTask extends AsyncTask<Object, Integer, Boolean> {
+
+    private static final String TAG = "TaggerTask";
 
     public interface TagCompletionListener {
         void onSuccess();
@@ -163,7 +166,7 @@ public class TaggerTask extends AsyncTask<Object, Integer, Boolean> {
                 publishProgress(i);
                 success = true;
             } catch (CannotWriteException | IOException | CannotReadException | InvalidAudioFrameException | TagException | ReadOnlyFileException e) {
-                e.printStackTrace();
+                LogUtils.logException(TAG, "Erreur lors de l'écriture des tags audio", e);
             } finally {
                 //Try to clean up our temp files
                 if (tempFiles != null && tempFiles.size() != 0) {

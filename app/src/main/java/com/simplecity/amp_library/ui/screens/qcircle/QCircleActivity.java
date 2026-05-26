@@ -327,10 +327,10 @@ public class QCircleActivity extends BaseActivity {
 
             final String action = intent.getAction();
             if (action != null) {
-                if (action.equals(InternalIntents.META_CHANGED)) {
+                if (InternalIntents.META_CHANGED.equals(action)) {
                     updateTrackInfo();
                     setPauseButtonImage();
-                } else if (action.equals(InternalIntents.PLAY_STATE_CHANGED)) {
+                } else if (InternalIntents.PLAY_STATE_CHANGED.equals(action)) {
                     setPauseButtonImage();
                 }
             }

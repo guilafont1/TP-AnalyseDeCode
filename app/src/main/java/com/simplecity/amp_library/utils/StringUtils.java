@@ -328,7 +328,7 @@ public class StringUtils {
             try {
                 return Integer.parseInt(string);
             } catch (NumberFormatException ignored) {
-
+                // Valeur non numérique : conserver la valeur par défaut.
             }
         }
         return -1;

@@ -14,9 +14,9 @@ public class HttpClient {
 
     private static HttpClient sInstance;
 
-    public OkHttpClient okHttpClient;
+    private final OkHttpClient okHttpClient;
 
-    public LastFmService lastFmService;
+    private final LastFmService lastFmService;
 
     public static final String TAG_ARTWORK = "artwork";
 
@@ -39,5 +39,13 @@ public class HttpClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         lastFmService = lastFmRestAdapter.create(LastFmService.class);
+    }
+
+    public OkHttpClient getOkHttpClient() {
+        return okHttpClient;
+    }
+
+    public LastFmService getLastFmService() {
+        return lastFmService;
     }
 }

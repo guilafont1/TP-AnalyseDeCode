@@ -22,6 +22,6 @@ public class ColorSetResource implements Resource<ColorSet> {
 
     @Override
     public void recycle() {
-
+        // Pas de ressource native à libérer : ColorSet est un objet léger en mémoire heap.
     }
 }

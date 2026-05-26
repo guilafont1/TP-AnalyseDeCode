@@ -20,7 +20,7 @@ public class DrawerDivider implements Parent<DrawerChild> {
     }
 
     public void bindView() {
-
+        // Séparateur visuel sans contenu à lier.
     }
 
     static class DividerHolder extends ParentViewHolder {

@@ -116,12 +116,12 @@ public class ArtworkUtils {
                         try {
                             fileInputStream = new FileInputStream(file);
                         } catch (FileNotFoundException ignored) {
-
+                            // Fichier artwork référencé mais absent sur le disque.
                         }
                     }
                 }
             } catch (NullPointerException ignored) {
-
+                // Colonne artwork absente ou curseur incomplet.
             } finally {
                 cursor.close();
             }

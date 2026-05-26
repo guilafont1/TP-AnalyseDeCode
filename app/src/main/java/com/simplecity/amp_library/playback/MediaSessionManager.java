@@ -165,7 +165,7 @@ class MediaSessionManager {
 
             @Override
             public void onCustomAction(String action, Bundle extras) {
-                if (action.equals(SHUFFLE_ACTION)) {
+                if (SHUFFLE_ACTION.equals(action)) {
                     queueManager.setShuffleMode(queueManager.shuffleMode == QueueManager.ShuffleMode.ON ? QueueManager.ShuffleMode.OFF : QueueManager.ShuffleMode.ON);
                 }
                 updateMediaSession(action);

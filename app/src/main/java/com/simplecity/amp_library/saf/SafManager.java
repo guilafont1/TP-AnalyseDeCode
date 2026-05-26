@@ -255,7 +255,7 @@ public class SafManager {
         }
 
         public SafDialog() {
-
+            // Fragment sans arguments : configuration via injection et show().
         }
 
         public static <T extends AppCompatActivity & SafResultListener> void show(T activity) {
