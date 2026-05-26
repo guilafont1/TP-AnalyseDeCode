@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <exclude domain="database" path="inclexcl.db" />
+    <exclude domain="database" path="play_count.db" />
+    <exclude domain="database" path="custom_artwork.db" />
+    <exclude domain="database" path="folders.db" />
+    <exclude domain="database" path="songblacklist.db" />
+    <exclude domain="database" path="count_info.db" />
+</full-backup-content>

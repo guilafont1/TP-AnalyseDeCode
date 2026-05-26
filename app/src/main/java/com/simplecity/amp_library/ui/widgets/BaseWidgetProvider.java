@@ -58,6 +58,22 @@ public abstract class BaseWidgetProvider extends AppWidgetProvider {
     }
 
     @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent == null || intent.getAction() == null) {
+            return;
+        }
+        String action = intent.getAction();
+        if (!AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)
+                && !AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)
+                && !AppWidgetManager.ACTION_APPWIDGET_ENABLED.equals(action)
+                && !AppWidgetManager.ACTION_APPWIDGET_DISABLED.equals(action)
+                && !AppWidgetManager.ACTION_APPWIDGET_OPTIONS_CHANGED.equals(action)) {
+            return;
+        }
+        super.onReceive(context, intent);
+    }
+
+    @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
         SharedPreferences sharedPreferences = getSharedPreferences(context);
