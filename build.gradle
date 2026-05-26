@@ -6,12 +6,28 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath Dependencies.Plugins.android
         classpath Dependencies.Plugins.gradleVersions
         classpath Dependencies.Plugins.playServices
         classpath Dependencies.Plugins.kotlin
+        // SonarScanner for Gradle (compatible Gradle 5.x)
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3.0.2871"
+    }
+}
+
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "guilafont1_TP-Analyse_de_code"
+        property "sonar.projectName", "TP-Analyse de code"
+        property "sonar.organization", "guilafont1"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.exclusions", "**/build/**,**/generated/**,**/R.java,**/BuildConfig.java,**/values-*/**"
     }
 }
 
