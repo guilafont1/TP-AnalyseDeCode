@@ -242,6 +242,7 @@
         <!-- Broadcast Receiver for small Widget -->
         <receiver
             android:name=".ui.widgets.WidgetProviderSmall"
+            android:exported="true"
             android:label="Shuttle 2x1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -281,6 +282,7 @@
         <!-- Broadcast Receiver for large Widget -->
         <receiver
             android:name=".ui.widgets.WidgetProviderLarge"
+            android:exported="true"
             android:label="Shuttle 4x2">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -294,6 +296,7 @@
         <!-- Broadcast Receiver for extra large Widget -->
         <receiver
             android:name=".ui.widgets.WidgetProviderExtraLarge"
+            android:exported="true"
             android:label="Shuttle 4x4">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

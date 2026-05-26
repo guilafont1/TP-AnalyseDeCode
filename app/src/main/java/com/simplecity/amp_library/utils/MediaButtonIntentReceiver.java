@@ -47,11 +47,11 @@ public class MediaButtonIntentReceiver extends DaggerBroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent);
-
-        if (!isAllowedIntentAction(intent)) {
+        if (!IntentReceiverSafety.isAllowedMediaButtonIntent(intent)) {
             return;
         }
+
+        super.onReceive(context, intent);
 
         handleIntent(context, intent, playbackSettingsManager);
 
@@ -60,18 +60,8 @@ public class MediaButtonIntentReceiver extends DaggerBroadcastReceiver {
         }
     }
 
-    private static boolean isAllowedIntentAction(Intent intent) {
-        if (intent == null) {
-            return false;
-        }
-        String action = intent.getAction();
-        return Intent.ACTION_MEDIA_BUTTON.equals(action)
-                || AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(action)
-                || Intent.ACTION_HEADSET_PLUG.equals(action);
-    }
-
     public static void handleIntent(Context context, Intent intent, PlaybackSettingsManager playbackSettingsManager) {
-        if (!isAllowedIntentAction(intent)) {
+        if (!IntentReceiverSafety.isAllowedMediaButtonIntent(intent)) {
             return;
         }
 

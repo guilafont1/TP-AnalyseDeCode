@@ -1,7 +1,9 @@
 package com.simplecity.amp_library.ui.widgets;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import com.simplecity.amp_library.utils.IntentReceiverSafety;
 import android.content.res.Resources;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
@@ -26,6 +28,14 @@ public class WidgetProviderLarge extends BaseWidgetProvider {
 
     @Inject
     public WidgetProviderLarge() {
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (!IntentReceiverSafety.isAllowedAppWidgetIntent(intent)) {
+            return;
+        }
+        super.onReceive(context, intent);
     }
 
     @Override
