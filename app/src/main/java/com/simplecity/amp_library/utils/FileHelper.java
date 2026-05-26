@@ -143,7 +143,7 @@ public class FileHelper {
                 filePath = file.getAbsolutePath();
             }
         } catch (IOException ignored) {
-
+            // Fichier .nomedia absent ou illisible : ignorer.
         }
 
         if (!TextUtils.isEmpty(filePath) && filePath.equals("/storage/emulated/0") ||

@@ -288,6 +288,8 @@ public class SortManager {
             case AlbumSort.ARTIST_NAME:
                 Collections.sort(albums, (a, b) -> ComparisonUtils.compare(a.albumArtistName, b.albumArtistName));
                 break;
+            default:
+                break;
         }
     }
 
@@ -338,6 +340,8 @@ public class SortManager {
                 Collections.sort(songs, (a, b) -> ComparisonUtils.compareInt(a.discNumber, b.discNumber));
                 Collections.sort(songs, (a, b) -> ComparisonUtils.compare(a.albumName, b.albumName));
                 break;
+            default:
+                break;
         }
     }
 
@@ -349,6 +353,8 @@ public class SortManager {
                 break;
             case ArtistSort.NAME:
                 Collections.sort(albumArtists, (a, b) -> ComparisonUtils.compare(a.name, b.name));
+                break;
+            default:
                 break;
         }
     }

@@ -4,12 +4,20 @@ import android.graphics.Bitmap;
 
 public class BitmapAndSize {
 
-    public Bitmap bitmap;
-    public Size size;
+    private final Bitmap bitmap;
+    private final Size size;
 
     public BitmapAndSize(Bitmap bitmap, Size size) {
         this.bitmap = bitmap;
         this.size = size;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public Size getSize() {
+        return size;
     }
 
     @Override
@@ -19,8 +27,8 @@ public class BitmapAndSize {
 
         BitmapAndSize that = (BitmapAndSize) o;
 
-        if (bitmap != null ? !bitmap.equals(that.bitmap) : that.bitmap != null) return false;
-        return size != null ? size.equals(that.size) : that.size == null;
+        if (bitmap != null ? !bitmap.equals(that.getBitmap()) : that.getBitmap() != null) return false;
+        return size != null ? size.equals(that.getSize()) : that.getSize() == null;
     }
 
     @Override

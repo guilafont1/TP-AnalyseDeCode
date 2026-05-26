@@ -219,7 +219,7 @@ public class Equalizer {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             int sessionId = intent.getIntExtra(AudioEffect.EXTRA_AUDIO_SESSION, 0);
-            if (action.equals(ACTION_OPEN_EQUALIZER_SESSION)) {
+            if (ACTION_OPEN_EQUALIZER_SESSION.equals(action)) {
                 if (!mAudioSessions.containsKey(sessionId)) {
                     try {
                         EffectSet effectSet = new EffectSet(sessionId);
@@ -229,7 +229,7 @@ public class Equalizer {
                     }
                 }
             }
-            if (action.equals(ACTION_CLOSE_EQUALIZER_SESSION)) {
+            if (ACTION_CLOSE_EQUALIZER_SESSION.equals(action)) {
                 EffectSet gone = mAudioSessions.remove(sessionId);
                 if (gone != null) {
                     gone.release();

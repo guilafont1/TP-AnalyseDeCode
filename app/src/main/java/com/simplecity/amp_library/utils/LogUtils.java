@@ -15,7 +15,7 @@ public class LogUtils {
         if (BuildConfig.DEBUG) {
             Log.e(tag, message + "\nThrowable: " + (throwable != null ? throwable.getMessage() : null));
             if (throwable != null) {
-                throwable.printStackTrace();
+                Log.e(tag, message, throwable);
             }
         } else {
             Crashlytics.log(Log.ERROR, tag, message + "\nThrowable: " + (throwable != null ? throwable.getMessage() : null));

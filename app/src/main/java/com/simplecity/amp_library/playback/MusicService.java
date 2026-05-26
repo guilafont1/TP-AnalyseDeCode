@@ -550,8 +550,9 @@ public class MusicService extends MediaBrowserServiceCompat {
                 return ServiceCommand.STOP;
             case MediaButtonCommand.TOGGLE_FAVORITE:
                 return ServiceCommand.TOGGLE_FAVORITE;
+            default:
+                return null;
         }
-        return null;
     }
 
 
@@ -1080,6 +1081,8 @@ public class MusicService extends MediaBrowserServiceCompat {
                 break;
             case InternalIntents.QUEUE_CHANGED:
                 onQueueChanged();
+                break;
+            default:
                 break;
         }
 

@@ -28,8 +28,9 @@ public class ArtworkModel {
                 return "Folder";
             case ArtworkProvider.Type.REMOTE:
                 return context.getString(R.string.artwork_type_internet);
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override

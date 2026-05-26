@@ -51,7 +51,7 @@ public class MultiFetcher implements DataFetcher<InputStream> {
         InputStream inputStream = null;
 
         //Custom/user selected artwork. Loads from a specific source.
-        UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) applicationContext).userSelectedArtwork.get(artworkProvider.getArtworkKey());
+        UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) applicationContext).getUserSelectedArtwork().get(artworkProvider.getArtworkKey());
         if (userSelectedArtwork != null) {
             switch (userSelectedArtwork.type) {
                 case ArtworkProvider.Type.MEDIA_STORE:
@@ -65,6 +65,8 @@ public class MultiFetcher implements DataFetcher<InputStream> {
                     break;
                 case ArtworkProvider.Type.REMOTE:
                     dataFetcher = new RemoteFetcher(artworkProvider);
+                    break;
+                default:
                     break;
             }
             inputStream = loadData(dataFetcher, priority);
@@ -132,8 +134,8 @@ public class MultiFetcher implements DataFetcher<InputStream> {
     }
 
     private String getCustomArtworkSuffix(Context context) {
-        if (((ShuttleApplication) context.getApplicationContext()).userSelectedArtwork.containsKey(artworkProvider.getArtworkKey())) {
-            UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) context.getApplicationContext()).userSelectedArtwork.get(artworkProvider.getArtworkKey());
+        if (((ShuttleApplication) context.getApplicationContext()).getUserSelectedArtwork().containsKey(artworkProvider.getArtworkKey())) {
+            UserSelectedArtwork userSelectedArtwork = ((ShuttleApplication) context.getApplicationContext()).getUserSelectedArtwork().get(artworkProvider.getArtworkKey());
             return "_" + userSelectedArtwork.type + "_" + (userSelectedArtwork.path == null ? "" : userSelectedArtwork.path.hashCode());
         }
         return "";

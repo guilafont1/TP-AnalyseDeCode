@@ -35,6 +35,6 @@ public class BlacklistWhitelistDbOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Schéma v1 inchangé : aucune migration tant que DATABASE_VERSION reste à 1.
     }
 }

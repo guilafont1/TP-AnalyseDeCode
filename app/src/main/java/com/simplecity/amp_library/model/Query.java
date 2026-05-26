@@ -27,6 +27,7 @@ public class Query {
         String sort;
 
         public Builder() {
+            // Builder vide : les champs sont renseignés via les méthodes fluides.
         }
 
         public Builder uri(Uri val) {

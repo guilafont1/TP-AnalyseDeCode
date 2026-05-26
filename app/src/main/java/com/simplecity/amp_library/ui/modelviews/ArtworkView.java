@@ -136,8 +136,8 @@ public class ArtworkView extends BaseViewModel<ArtworkView.ViewHolder> {
                         holder.textContainer.setBackgroundResource(R.drawable.text_protection_scrim_reversed);
                         holder.progressBar.setVisibility(View.GONE);
 
-                        holder.imageView.setImageBitmap(resource.bitmap);
-                        holder.lineTwo.setText(String.format("%sx%spx", resource.size.width, resource.size.height));
+                        holder.imageView.setImageBitmap(resource.getBitmap());
+                        holder.lineTwo.setText(String.format("%sx%spx", resource.getSize().getWidth(), resource.getSize().getHeight()));
                     }
                 });
 

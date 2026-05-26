@@ -336,7 +336,7 @@ public class DeleteDialog extends DialogFragment implements SafManager.SafDialog
         try {
             getContext().getContentResolver().applyBatch(PlayCountTable.AUTHORITY, operations);
         } catch (RemoteException | OperationApplicationException e) {
-            e.printStackTrace();
+            LogUtils.logException(TAG, "Erreur lors de la suppression des compteurs de lecture", e);
         }
 
         CustomMediaScanner.scanFiles(getContext(), Stream.of(deletedSongs)

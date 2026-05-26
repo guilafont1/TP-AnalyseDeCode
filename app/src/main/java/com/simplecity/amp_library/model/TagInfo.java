@@ -1,6 +1,7 @@
 package com.simplecity.amp_library.model;
 
 import android.text.TextUtils;
+import com.simplecity.amp_library.utils.LogUtils;
 import com.simplecity.amp_library.utils.StringUtils;
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import org.jaudiotagger.tag.TagException;
  * A holder for various id3 tag information associated with a file.
  */
 public class TagInfo implements Serializable {
+
+    private static final String TAG = "TagInfo";
 
     public String artistName;
     public String albumArtistName;
@@ -52,7 +55,7 @@ public class TagInfo implements Serializable {
                     this.sampleRate = getSampleRate(audioFile);
                     this.genre = getTag(audioFile, FieldKey.GENRE);
                 } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
-                    e.printStackTrace();
+                    LogUtils.logException(TAG, "Impossible de lire les métadonnées du fichier audio", e);
                 }
             }
         }

@@ -171,7 +171,7 @@ public class ArtworkDownloadService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null) {
             final String action = intent.getAction();
-            if (action != null && action.equals(ACTION_CANCEL)) {
+            if (ACTION_CANCEL.equals(action)) {
                 //Handle a notification cancel action click:
                 disposables.clear();
                 notificationHelper.cancel(NOTIFICATION_ID);
